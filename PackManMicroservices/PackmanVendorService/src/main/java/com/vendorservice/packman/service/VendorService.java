@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class VendorService {
@@ -13,8 +15,12 @@ public class VendorService {
     @Autowired
     private IVendorRepository vendorRepository;
 
-    public void setVendor(Vendor vendor){
-        vendorRepository.spSetVendor(vendor.getName(),vendor.getLastName(),vendor.getEmail());
+    public void createVendor(Vendor vendor){
+        vendorRepository.spCreateVendor(vendor.getName(),vendor.getLastName(),vendor.getEmail());
+    }
+
+    public List<Vendor> findVendor(){
+        return vendorRepository.findVendor();
     }
 
 }

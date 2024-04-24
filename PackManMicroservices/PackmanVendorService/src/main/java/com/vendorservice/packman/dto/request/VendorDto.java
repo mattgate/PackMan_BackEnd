@@ -1,12 +1,15 @@
 package com.vendorservice.packman.dto.request;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
-public class SetVendorRQ {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class VendorDto {
     private String name;
     private String lastName;
     private String email;
