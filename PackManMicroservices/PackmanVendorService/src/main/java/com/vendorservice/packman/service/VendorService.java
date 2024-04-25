@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,6 +22,18 @@ public class VendorService {
 
     public List<Vendor> findVendor(){
         return vendorRepository.findVendor();
+    }
+
+    public Optional<Vendor> findVendorById(Long id){
+        return vendorRepository.findById(id);
+    }
+
+    public void saveVendor(Vendor vendor){
+        vendorRepository.save(vendor);
+    }
+
+    public void deleteVendorById(Long id){
+        vendorRepository.deleteById(id);
     }
 
 }
