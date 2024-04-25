@@ -28,8 +28,12 @@ public class VendorService {
         return vendorRepository.findById(id);
     }
 
-    public void save(Vendor vendor){
+    public void saveVendor(Vendor vendor){
         vendorRepository.save(vendor);
+    }
+
+    public void deleteVendorById(Long id){
+        vendorRepository.deleteById(id);
     }
 
 }

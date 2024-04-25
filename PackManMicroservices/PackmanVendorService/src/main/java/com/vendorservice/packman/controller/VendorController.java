@@ -48,7 +48,7 @@ public class VendorController {
     @PutMapping("/updateventor")
     public ResponseEntity<?> updateVendor(@RequestBody VendorDto vendorDto){
 
-        Optional<Vendor> optionalVendor= vendorService.findVendorById(vendorDto.getId());
+        Optional<Vendor> optionalVendor = vendorService.findVendorById(vendorDto.getId());
 
         if (optionalVendor.isPresent()){
             Vendor vendor = optionalVendor.get();
@@ -56,13 +56,26 @@ public class VendorController {
             vendor.setLastName(vendorDto.getLastName());
             vendor.setEmail(vendorDto.getEmail());
 
-            vendorService.save(vendor);
+            vendorService.saveVendor(vendor);
 
-            return ResponseEntity.ok("Se actualizo el dato correctamente.")
+            return ResponseEntity.ok("Se actualizo el dato correctamente.");
         }
 
         return ResponseEntity.notFound().build();
 
+    }
+
+    @DeleteMapping("/deletevendorbyid/{id}")
+    public ResponseEntity<?> deleteVendorById(@PathVariable("id") Long id){
+
+        Optional<Vendor> optionalVendor = vendorService.findVendorById(id);
+
+        if(optionalVendor.isPresent()){
+            vendorService.deleteVendorById(id);
+            return ResponseEntity.ok("Se elimino el dato correctamente.");
+        }
+
+        return ResponseEntity.badRequest().build();
     }
 
 }
