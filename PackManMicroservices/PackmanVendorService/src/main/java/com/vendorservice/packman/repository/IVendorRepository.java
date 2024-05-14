@@ -5,16 +5,27 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public interface IVendorRepository extends JpaRepository<Vendor,Long> {
+public interface IVendorRepository extends JpaRepository<Vendor, Integer> {
 
-    @Procedure(name = "sp_create_vendor")
-    public void spCreateVendor(@Param("p_VEN_NAME") String name, @Param("p_VEN_LNAME") String lastname, @Param("p_VEN_EMAIL") String email);
+    @Transactional
+    @Procedure(procedureName = "sp_create_vendor")
+    public void createVendor
+            (
+                    @Param("p_VEN_NAME") String name,
+                    @Param("p_VEN_LASTNAME") String lastname,
+                    @Param("p_VEN_EMAIL") String email,
+                    @Param("p_VEN_ADDRESS") String address,
+                    @Param("p_VEN_PHONE") String phone,
+                    @Param("p_VEN_PASSWORD") String password
 
-    @Procedure(name = "sp_findVendor")
-    public List<Vendor> findVendor();
+            );
+
+    @Procedure(procedureName = "sp_find_all_vendor")
+    public List<Vendor> findAllVendor();
 
 }

@@ -17,23 +17,30 @@ public class VendorService {
     private IVendorRepository vendorRepository;
 
     public void createVendor(Vendor vendor){
-        vendorRepository.spCreateVendor(vendor.getName(),vendor.getLastName(),vendor.getEmail());
+        vendorRepository.createVendor(
+                vendor.getName(),
+                vendor.getLastName(),
+                vendor.getEmail(),
+                vendor.getAddress(),
+                vendor.getPhone(),
+                vendor.getPassword()
+        );
     }
 
-    public List<Vendor> findVendor(){
-        return vendorRepository.findVendor();
+    public List<Vendor> findAllVendor(){
+        return vendorRepository.findAllVendor();
     }
 
-    public Optional<Vendor> findVendorById(Long id){
-        return vendorRepository.findById(id);
-    }
-
-    public void saveVendor(Vendor vendor){
-        vendorRepository.save(vendor);
-    }
-
-    public void deleteVendorById(Long id){
-        vendorRepository.deleteById(id);
-    }
+//    public Optional<Vendor> findVendorById(Long id){
+//        return vendorRepository.findById(id);
+//    }
+//
+//    public void saveVendor(Vendor vendor){
+//        vendorRepository.save(vendor);
+//    }
+//
+//    public void deleteVendorById(Long id){
+//        vendorRepository.deleteById(id);
+//    }
 
 }

@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VendorDto {
-    private Long id;
+public class findAllVendorRsDto {
     private String name;
     private String lastName;
     private String email;
+    private String address;
+    private String phone;
 }
-
